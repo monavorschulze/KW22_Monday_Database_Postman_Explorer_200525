@@ -1,43 +1,31 @@
 package de.neuefische.studentdvweb.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.Objects;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 
 public class Student {
     private String name;
-    private String age;
-
-    public Student(String name, String age) {
-        this.name = name;
-        this.age = age;
-    }
-
-    public String getName(){
-    return name;
-    }
-
-    public void setName(String name){
-        this.name = name;
-    }
-
-    public String getAge() {
-        return age;
-    }
-
-    public void setAge(String age) {
-        this.age = age;
-    }
+    private String id;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Student)) return false;
         Student student = (Student) o;
-        return Objects.equals(getName(), student.getName());
+        return Objects.equals(getName(), student.getName()) &&
+                Objects.equals(getId(), student.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getName());
+        return Objects.hash(getName(), getId());
     }
-
 }
+
